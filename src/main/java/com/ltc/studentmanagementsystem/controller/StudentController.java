@@ -28,3 +28,33 @@ public class StudentController {
 
 
     //R
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public StudentEntity getById(@PathVariable Long id){
+        return studentService.getById(id);
+    }
+
+    //R
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public List<StudentEntity> getAll(){
+        return studentService.getAll();
+    }
+
+
+    //U
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public StudentEntity update(@PathVariable Long id, @RequestParam StudentEntity studentEntity){
+        return studentService.update(id, studentEntity);
+    }
+
+
+    //D
+    @DeleteMapping("/id")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void delete(@PathVariable Long id){
+        studentService.delete(id);
+    }
+
+}
