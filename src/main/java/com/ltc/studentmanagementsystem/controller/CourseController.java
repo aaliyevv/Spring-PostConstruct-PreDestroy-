@@ -35,4 +35,30 @@ public class CourseController {
         return courseService.getById(id);
     }
 
+
+    //R
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public List<CourseEntity> getAll(){
+        return courseService.getAll();
+    }
+
+
+    //U
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public CourseEntity update(@PathVariable Long id,
+                               @Valid @RequestBody CourseEntity courseEntity){
+        return courseService.update(id, courseEntity);
+    }
+
+
+    //D
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteById(@PathVariable Long id){
+        courseService.delete(id);
+    }
+
+
 }
